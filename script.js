@@ -123,3 +123,61 @@ document.addEventListener("DOMContentLoaded", (event) => {
         });
     });
 });
+
+// --- CONTACT FORM VALIDATION & SUCCESS MODAL ---
+function submitContactForm(btn) {
+    const form = btn.closest('.contact-form');
+    const inputs = form.querySelectorAll('input, select, textarea');
+    let isValid = true;
+
+    // Clear previous errors
+    form.querySelectorAll('.error-msg').forEach(e => e.remove());
+    form.querySelectorAll('.error').forEach(e => e.classList.remove('error'));
+
+    inputs.forEach(input => {
+        const value = input.value.trim();
+        let errorMessage = '';
+
+        if (input.hasAttribute('required') && !value) {
+            errorMessage = 'This field is required';
+        } else if (input.type === 'email' && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+            errorMessage = 'Please enter a valid email';
+        } else if (input.type === 'tel' && value && !/^[\d\s\+\-()]{7,15}$/.test(value)) {
+            errorMessage = 'Please enter a valid phone number';
+        } else if (input.tagName === 'SELECT' && !value) {
+            errorMessage = 'Please select an option';
+        }
+
+        if (errorMessage) {
+            isValid = false;
+            input.classList.add('error');
+            const msg = document.createElement('span');
+            msg.className = 'error-msg';
+            msg.textContent = errorMessage;
+            input.parentElement.appendChild(msg);
+        }
+    });
+
+    if (isValid) {
+        // Show success modal
+        const modal = document.getElementById('successModal');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Reset form
+        form.reset();
+    }
+}
+
+function closeSuccessModal() {
+    const modal = document.getElementById('successModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Close modal on overlay click
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('success-modal-overlay')) {
+        closeSuccessModal();
+    }
+});

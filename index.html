@@ -342,12 +342,13 @@
                             </div>
                             <div class="form-group">
                                 <label>Phone Number</label>
-                                <input type="tel" placeholder="+91 0000000000">
+                                <input type="tel" placeholder="+91 0000000000" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Subject of Inquiry</label>
-                            <select>
+                            <select required>
+                                <option value="">Select an option</option>
                                 <option>New Contract Opportunity</option>
                                 <option>General Inquiry</option>
                                 <option>Partnership</option>
@@ -358,8 +359,7 @@
                             <textarea rows="5" placeholder="Tell us about your operational requirements..."
                                 required></textarea>
                         </div>
-                        <button type="button" class="btn btn-primary form-submit"
-                            onclick="alert('Demo: Form Submitted Successfully!')">
+                        <button type="button" class="btn btn-primary form-submit" onclick="submitContactForm(this)">
                             Send Message <i class="fas fa-paper-plane" style="margin-left: 8px;"></i>
                         </button>
                     </form>
@@ -368,6 +368,26 @@
             </div>
         </div>
     </section>
+
+    <!-- Success Modal -->
+    <div class="success-modal-overlay" id="successModal">
+        <div class="success-modal">
+            <div class="success-icon">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                    <circle cx="32" cy="32" r="30" stroke="var(--primary)" stroke-width="3"
+                        fill="rgba(15,82,186,0.08)" />
+                    <path d="M20 33L28 41L44 23" stroke="var(--secondary)" stroke-width="3.5" stroke-linecap="round"
+                        stroke-linejoin="round" fill="none" class="checkmark-path" />
+                </svg>
+            </div>
+            <h3>Message Sent Successfully!</h3>
+            <p>Thank you for reaching out to Suksma Associates. Our team will review your inquiry and get back to you
+                within 24 hours.</p>
+            <button class="btn btn-primary success-close-btn" onclick="closeSuccessModal()">
+                Got It <i class="fas fa-check" style="margin-left: 6px;"></i>
+            </button>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
