@@ -86,57 +86,63 @@ document.addEventListener("DOMContentLoaded", (event) => {
         delay: 0.5
     });
 
-    // Universal ScrollReveal Classes
-    const revealElements = document.querySelectorAll('.gs-reveal-up');
+    // ScrollTrigger animations — DESKTOP ONLY (disable on mobile/tablet to fix scroll jank)
+    if (window.innerWidth > 992) {
 
-    revealElements.forEach((elem) => {
-        gsap.from(elem, {
-            scrollTrigger: {
-                trigger: elem,
-                start: "top 85%", // Animation starts when top of element hits 85% of viewport height
-                toggleActions: "play none none reverse"
-            },
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power3.out"
+        // Universal ScrollReveal Classes
+        var revealElements = document.querySelectorAll('.gs-reveal-up');
+
+        revealElements.forEach(function (elem) {
+            gsap.from(elem, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power3.out"
+            });
         });
-    });
 
-    // Staggered list animations (for About/Projects pages)
-    const staggerContainers = document.querySelectorAll('.gs-stagger-container');
+        // Staggered list animations (for About/Projects pages)
+        var staggerContainers = document.querySelectorAll('.gs-stagger-container');
 
-    staggerContainers.forEach((container) => {
-        const items = container.querySelectorAll('.gs-stagger-item');
+        staggerContainers.forEach(function (container) {
+            var items = container.querySelectorAll('.gs-stagger-item');
 
-        gsap.from(items, {
-            scrollTrigger: {
-                trigger: container,
-                start: "top 80%",
-                toggleActions: "play none none reverse"
-            },
-            y: 30,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.2, // Delay between each item
-            ease: "power3.out"
+            gsap.from(items, {
+                scrollTrigger: {
+                    trigger: container,
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                },
+                y: 30,
+                opacity: 0,
+                duration: 0.6,
+                stagger: 0.2,
+                ease: "power3.out"
+            });
         });
-    });
+
+    } // end desktop-only ScrollTrigger check
+
 });
 
 // --- CONTACT FORM VALIDATION & SUCCESS MODAL ---
 function submitContactForm(btn) {
-    const form = btn.closest('.contact-form');
-    const inputs = form.querySelectorAll('input, select, textarea');
-    let isValid = true;
+    var form = btn.closest('.contact-form');
+    var inputs = form.querySelectorAll('input, select, textarea');
+    var isValid = true;
 
     // Clear previous errors
-    form.querySelectorAll('.error-msg').forEach(e => e.remove());
-    form.querySelectorAll('.error').forEach(e => e.classList.remove('error'));
+    form.querySelectorAll('.error-msg').forEach(function (e) { e.remove(); });
+    form.querySelectorAll('.error').forEach(function (e) { e.classList.remove('error'); });
 
-    inputs.forEach(input => {
-        const value = input.value.trim();
-        let errorMessage = '';
+    inputs.forEach(function (input) {
+        var value = input.value.trim();
+        var errorMessage = '';
 
         if (input.hasAttribute('required') && !value) {
             errorMessage = 'This field is required';
@@ -151,7 +157,7 @@ function submitContactForm(btn) {
         if (errorMessage) {
             isValid = false;
             input.classList.add('error');
-            const msg = document.createElement('span');
+            var msg = document.createElement('span');
             msg.className = 'error-msg';
             msg.textContent = errorMessage;
             input.parentElement.appendChild(msg);
@@ -160,7 +166,7 @@ function submitContactForm(btn) {
 
     if (isValid) {
         // Show success modal
-        const modal = document.getElementById('successModal');
+        var modal = document.getElementById('successModal');
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
 
@@ -170,13 +176,13 @@ function submitContactForm(btn) {
 }
 
 function closeSuccessModal() {
-    const modal = document.getElementById('successModal');
+    var modal = document.getElementById('successModal');
     modal.classList.remove('active');
     document.body.style.overflow = '';
 }
 
 // Close modal on overlay click
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
     if (e.target.classList.contains('success-modal-overlay')) {
         closeSuccessModal();
     }
