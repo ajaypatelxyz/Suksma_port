@@ -925,6 +925,24 @@ ul {
         margin: 0 auto;
     }
 
+    /* Floating cards - pull inside viewport */
+    .card-1 {
+        left: 0;
+    }
+
+    .card-2 {
+        right: 0;
+    }
+
+    /* Background shapes - contain within viewport */
+    .shape-1 {
+        right: 0;
+    }
+
+    .shape-2 {
+        left: 0;
+    }
+
     /* About - overview grid stack */
     .overview-grid {
         grid-template-columns: 1fr;
