@@ -155,69 +155,7 @@
         </div>
     </footer>
 
-    <style>
-        .project-card {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-bottom: 8rem;
-        }
 
-        .project-card.reverse .project-content {
-            order: 2;
-        }
-
-        .project-card.reverse .project-img {
-            order: 1;
-        }
-
-        .project-content h2 {
-            font-size: 2.8rem;
-            color: var(--text-dark);
-            margin: 1rem 0;
-            line-height: 1.1;
-        }
-
-        .project-content .location {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-        }
-
-        .project-content .desc {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            line-height: 1.8;
-        }
-
-        .project-img img {
-            width: 100%;
-            border-radius: 20px;
-            display: block;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-        }
-
-        @media (max-width: 992px) {
-            .project-card {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                margin-bottom: 4rem;
-            }
-
-            .project-card.reverse .project-content {
-                order: 1;
-            }
-
-            .project-card.reverse .project-img {
-                order: 2;
-            }
-        }
-    </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
