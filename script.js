@@ -66,61 +66,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         ease: 'sine.inOut'
     });
 
-    // Hero entrance animations
-    const tl = gsap.timeline();
-
-    tl.from('.badge-wrapper', {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power3.out'
-    })
-        .from('.hero-title', {
-            y: 40,
-            opacity: 0,
-            duration: 0.8,
-            ease: 'power3.out'
-        }, "-=0.6")
-        .from('.hero-subtitle', {
-            y: 30,
-            opacity: 0,
-            duration: 0.8,
-            ease: 'power3.out'
-        }, "-=0.6")
-        .from('.hero-btns', {
-            y: 30,
-            opacity: 0,
-            duration: 0.8,
-            ease: 'power3.out'
-        }, "-=0.6")
-        .from('.stat-item', {
-            y: 30,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.2,
-            ease: 'power3.out'
-        }, "-=0.4")
-        .from('.hero-image .image-wrapper', {
-            x: window.innerWidth <= 768 ? 0 : 50,
-            y: window.innerWidth <= 768 ? 40 : 0,
-            opacity: 0,
-            duration: 1,
-            ease: 'power3.out'
-        }, "-=1.5")
-        .from('.card-1', {
-            y: 30,
-            x: -20,
-            opacity: 0,
-            duration: 0.8,
-            ease: 'back.out(1.7)'
-        }, "-=0.5")
-        .from('.card-2', {
-            y: -30,
-            x: 20,
-            opacity: 0,
-            duration: 0.8,
-            ease: 'back.out(1.7)'
-        }, "-=0.5");
+    // Hero entrance — no sequential delay, everything visible instantly
 
     // Floating effect for cards
     gsap.to('.gs-float', {
